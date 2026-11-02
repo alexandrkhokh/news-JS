@@ -6,7 +6,7 @@ const DotenvWebpackPlugin = require('dotenv-webpack');
 
 const baseConfig = {
     mode: 'development',
-    entry: path.resolve(__dirname, './src/index.js'),
+    entry: path.resolve(__dirname, './src/index.ts'),
     module: {
         rules: [
             {

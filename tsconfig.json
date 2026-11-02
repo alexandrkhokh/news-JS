@@ -10,7 +10,7 @@
     "module": "ESNext",
     "target": "ES2022",
     "moduleResolution": "bundler",
-    "types": [],
+    "types": ["node"],
     "skipLibCheck": true,
     "allowJs": true,
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
@@ -37,13 +37,13 @@
     // "noPropertyAccessFromIndexSignature": true,
 
     // Bundler mode
-    "verbatimModuleSyntax": true,
     "moduleDetection": "force",
 
     // Recommended Options
     "strict": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
+    "noImplicitAny": true,
   },
   "include": ["src"],
   "exclude": ["dist"]
