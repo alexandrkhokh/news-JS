@@ -1,21 +1,12 @@
 import AppLoader from './appLoader';
-import { NewsApiResponse, SourcesApiResponse } from '../../types';
+import { Callback, Endpoint, NewsApiResponse, SourcesApiResponse } from '../../types';
 
 class AppController extends AppLoader {
-    public getSources(callback: (data: SourcesApiResponse) => void) {
-        super.getResp(
-            {
-                endpoint: 'sources',
-            },
-            (data: NewsApiResponse | SourcesApiResponse) => {
-                if ('sources' in data) {
-                    callback(data as SourcesApiResponse);
-                }
-            }
-        );
+    public getSources(callback: Callback<SourcesApiResponse>): void {
+        super.getResp<SourcesApiResponse>({ endpoint: Endpoint.Sources }, callback);
     }
 
-    public getNews(e: Event, callback: (data: NewsApiResponse) => void) {
+    public getNews(e: Event, callback: Callback<NewsApiResponse>): void {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
@@ -24,18 +15,12 @@ class AppController extends AppLoader {
                 const sourceId = target.getAttribute('data-source-id');
                 if (newsContainer.getAttribute('data-source') !== sourceId && sourceId != null) {
                     newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
+                    super.getResp<NewsApiResponse>(
                         {
-                            endpoint: 'everything',
-                            options: {
-                                sources: sourceId,
-                            },
+                            endpoint: Endpoint.Everything,
+                            options: { sources: sourceId },
                         },
-                        (data: NewsApiResponse | SourcesApiResponse) => {
-                            if ('articles' in data) {
-                                callback(data as NewsApiResponse);
-                            }
-                        }
+                        callback
                     );
                 }
                 return;

@@ -94,3 +94,29 @@ export interface NewsSource extends Source {
     language?: Languages;
     country?: Countries;
 }
+
+export enum Endpoint {
+    Sources = 'sources',
+    Everything = 'everything',
+}
+
+export enum HttpMethod {
+    GET = 'GET',
+    POST = 'POST',
+}
+
+export type Callback<T> = (data: T) => void;
+
+export type LoaderOptions = Readonly<{ apiKey: string }>;
+
+export interface ApiQuery {
+    sources: string;
+    q: string;
+    language: Languages;
+    country: Countries;
+    category: string;
+}
+
+export type RequestOptions = Partial<ApiQuery>;
+
+export type SourceItem = Pick<NewsSource, 'id' | 'name'>;

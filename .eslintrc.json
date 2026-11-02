@@ -1,4 +1,5 @@
 {
+    "ignorePatterns": ["dist", "node_modules"],
     "plugins": ["prettier", "import"],
     "extends": [
         "plugin:@typescript-eslint/recommended",
