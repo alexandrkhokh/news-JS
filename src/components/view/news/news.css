@@ -1,8 +1,7 @@
 .news__item {
     display: flex;
     flex-direction: column;
-    margin: 1rem auto;
-    margin-bottom: 1.6%;
+    margin: 0 auto;
     background: #fff;
     color: #333;
     line-height: 1.4;
@@ -35,7 +34,7 @@
 .news__item .news__meta-details ul {
     margin: auto;
     padding: 0;
-    list-style: none;
+    list-style: none; 
 }
 
 .news__item .news__meta-details {
